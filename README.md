@@ -77,5 +77,6 @@ El programa mostrará una breve descripción y luego pedirá los datos necesario
 - _**William A. Hernández A.**_
 - _**Jesus D. Angulo B.**_
 - _**Ivan M. Vasquez A.**_
+
 **Estudiantes de Ingeniería Mecatrónica**
 **Universidad Nacional de Colombia - Sede De la Paz**
