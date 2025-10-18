@@ -3,23 +3,22 @@ Proyecto académico — Programación Avanzada (C++)
 Este proyecto implementa los cinco ejercicios del Trabajo Práctico 01 de la asignatura Programación Avanzada, desarrollados en C++ con un enfoque modular, orientado a objetos y organizado en múltiples librerías (.hpp y .cpp).
 
 TP01_ProgramacionAvanzada/
-│
-├── Archivos_cpp/              # Implementaciones (.cpp)
-│   ├── Operaciones_basicas.cpp
-│   ├── Vector.cpp
-│   ├── Contador_de_vocales.cpp
-│   ├── Norma_vector_Eu.cpp
-│   └── Matriz_pseudo.cpp
-│
-├── Archivos_hpp/              # Cabeceras (.hpp)
-│   ├── Operaciones_basicas.hpp
-│   ├── Vector.hpp
-│   ├── Contador_de_vocales.hpp
-│   ├── Norma_vector_Eu.hpp
-│   └── Matriz_pseudo.hpp
-│
-├── proyecto.cpp               # Archivo principal (menú general)
-└── README.md                  # Documentación del proyecto
+
+    - Archivos_cpp/              # Implementaciones (.cpp)
+        - Operaciones_basicas.cpp
+        - Vector.cpp
+        - Contador_de_vocales.cpp
+        - Norma_vector_Eu.cpp
+        - Matriz_pseudo.cpp
+
+    - Archivos_hpp/              # Cabeceras (.hpp)
+        - Operaciones_basicas.hpp
+        - Vector.hpp
+        - Contador_de_vocales.hpp
+        - Norma_vector_Eu.hpp
+        - Matriz_pseudo.hpp
+    - proyecto.cpp               # Archivo principal (menú general)
+    - README.md                  # Documentación del proyecto
 
 **Requisitos:**
 
@@ -34,6 +33,7 @@ TP01_ProgramacionAvanzada/
 Desde la carpeta principal del proyecto, abre una terminal y ejecuta:
 
     g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o runproyect
+_________________________________________________________________________________________________
 
     | Parte                | Descripción                            |
     | -------------------- | -------------------------------------- |
