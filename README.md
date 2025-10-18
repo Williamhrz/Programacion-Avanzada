@@ -74,8 +74,8 @@ El programa mostrará una breve descripción y luego pedirá los datos necesario
 
 **Autores**
 
-**William A. Hernández A.**
-**Jesus D. Angulo B.**
-**Ivan M. Vasquez A.**
+- _**William A. Hernández A.**_
+- _**Jesus D. Angulo B.**_
+- _**Ivan M. Vasquez A.**_
 **Estudiantes de Ingeniería Mecatrónica**
 **Universidad Nacional de Colombia - Sede De la Paz**
