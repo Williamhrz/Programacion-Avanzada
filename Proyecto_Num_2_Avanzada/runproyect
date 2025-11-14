@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "Compilando el proyecto..."
+
+g++ -Wall -Wextra -g3 \
+    proyecto.cpp \
+    Archivos_cpp/act2_matriz.cpp \
+    -I Archivos_hpp \
+    -o output/proyecto
+
+if [ $? -eq 0 ]; then
+    echo "Compilación exitosa. Ejecutando el programa..."
+    echo "---------------------------------------------"
+    ./output/proyecto
+else
+    echo "Error en la compilación."
+fi
