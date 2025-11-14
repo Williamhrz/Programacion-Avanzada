@@ -1,4 +1,4 @@
-#include "act2_matriz.hpp"
+#include "../Archivos_hpp/act2_matriz.hpp"
 #include <cstdlib>
 #include <ctime>
 

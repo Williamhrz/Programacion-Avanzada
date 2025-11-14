@@ -1,4 +1,4 @@
-#include "act6_domino.hpp"
+#include "../Archivos_hpp/act6_domino.hpp"
 #include <algorithm>
 #include <random>
 using namespace std;
