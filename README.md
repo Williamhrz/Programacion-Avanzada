@@ -4,8 +4,6 @@ El repositorio está organizado en dos carpetas principales, cada una correspond
 Ambos proyectos están estructurados de manera modular para mantener un código limpio, ordenado y fácil de mantener.  
 Cada proyecto incluye un archivo **README.md** con instrucciones de compilación y ejecución.
 
----
-
 Proyecto_Num_1 — TP01 Programación Avanzada
 
 Esta carpeta contiene el desarrollo completo del **Trabajo Práctico 01**.  
@@ -62,22 +60,24 @@ Estructura interna
   Carpeta que contiene las implementaciones (`.cpp`) utilizadas específicamente en este proyecto.  
   Incluye:
 
-    - `Clase_estudiante.cpp`  
-    - `Sistema_registro.cpp`  
-    - `Calificaciones.cpp`  
-    - `Promedios.cpp`  
-    - `Archivos.cpp`
+    - `act1_vector3D.cpp` 
+    - `act2_matriz.cpp` 
+    - `act3_polinomio.cpp` 
+    - `act4_complejos.cpp` 
+    - `act5_ecuaciones.cpp` 
+    - `act6_domino.cpp` 
 
 - **Archivos_hpp/**
 
   Carpeta que agrupa los archivos de cabecera (`.hpp`) correspondientes a las clases, funciones y prototipos utilizados en el TP02.  
   Incluye:
 
-    - `Clase_estudiante.hpp`  
-    - `Sistema_registro.hpp`  
-    - `Calificaciones.hpp`  
-    - `Promedios.hpp`  
-    - `Archivos.hpp`
+    - `act1_vector3D.hpp`
+    - `act2_matriz.hpp`
+    - `act3_polinomio.hpp`
+    - `act4_complejos.hpp`
+    - `act5_ecuaciones.hpp`
+    - `act6_domino.hpp`
 
 - **README.md**
 
