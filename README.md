@@ -4,6 +4,8 @@ El repositorio está organizado en dos carpetas principales, cada una correspond
 Ambos proyectos están estructurados de manera modular para mantener un código limpio, ordenado y fácil de mantener.  
 Cada proyecto incluye un archivo **README.md** con instrucciones de compilación y ejecución.
 
+---
+
 Proyecto_Num_1 — TP01 Programación Avanzada
 
 Esta carpeta contiene el desarrollo completo del **Trabajo Práctico 01**.  
