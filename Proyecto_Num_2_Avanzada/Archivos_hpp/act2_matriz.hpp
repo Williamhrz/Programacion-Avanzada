@@ -1,34 +1,42 @@
-#ifndef MATRIZ_H
-#define MATRIZ_H
+#ifndef ACT2_MATRIZ_HPP
+#define ACT2_MATRIZ_HPP
 
 #include <iostream>
 
 class Matriz {
 private:
-    int n;
-    int** datos;
+    int n;          // tamaño de la matriz (n x n)
+    int** datos;    // puntero doble para matriz dinámica
 
 public:
-    // Constructor: inicializa matriz n×n con valores aleatorios
+    // Constructor: crea la matriz y la llena con números aleatorios
     Matriz(int n);
 
-    // Constructor de copia
+    // Constructor de copia (profunda)
     Matriz(const Matriz& otra);
 
-    // Destructor
+    // Destructor: libera memoria dinámica
     ~Matriz();
 
-    // Operador para indexar matriz: m(i,j)
+    // Operador para acceder a un elemento
     int& operator()(int i, int j);
 
-    // Imprimir matriz
+    // Obtener el tamaño
+    int getSize() const { return n; }
+
+    // Imprimir matriz en consola
     void imprimir() const;
 
-    // Calcular transpuesta
+    // Retorna la matriz transpuesta
     Matriz transpuesta() const;
 
-    // Multiplicar por otra matriz n×n
+    // Multiplica 2 matrices n×n
     Matriz multiplicar(const Matriz& otra) const;
+
+    // Sobrecarga del operador * como alias de multiplicar
+    Matriz operator*(const Matriz& otra) const {
+        return multiplicar(otra);
+    }
 };
 
 #endif
