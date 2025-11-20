@@ -5,6 +5,9 @@
 #include <vector>
 #include <string>
 
+using namespace std;
+
+// ======================== FICHA =========================
 class Ficha {
 private:
     int a, b;
@@ -15,52 +18,55 @@ public:
     int getA() const { return a; }
     int getB() const { return b; }
 
-    void girar(); // intercambia a <-> b
+    void girar();
     void imprimir() const;
 };
 
+// ======================== JUGADOR =========================
 class Jugador {
 private:
-    std::string nombre;
-    std::vector<Ficha> mano;
+    string nombre;
+    vector<Ficha> mano;
 
 public:
-    Jugador(const std::string& nombre = "");
-
-    std::string getNombre() const { return nombre; }
+    Jugador(const string& nombre);
 
     void agregarFicha(const Ficha& f);
     void mostrarMano() const;
 
-    bool puedeJugar(int extremoIzq, int extremoDer) const;
-    bool jugarFicha(int extremoIzq, int extremoDer, Ficha& fichaSalida, bool& porIzquierda);
-    
+    bool puedeJugar(int izq, int der) const;
+    bool jugarFicha(int izq, int der, Ficha& fichaSalida, bool& porIzquierda);
+
     bool sinFichas() const { return mano.empty(); }
+    string getNombre() const { return nombre; }
+
+    // Necesarios para determinar ganador
+    int sumarPuntos() const;
+    int cantidadFichas() const;
 };
 
+// ======================== JUEGO DOMINO =========================
 class JuegoDomino {
 private:
-    std::vector<Ficha> fichas;
-    std::vector<Jugador> jugadores;
-    std::vector<Ficha> mesa;
-
+    vector<Ficha> fichas;      
+    vector<Ficha> mesa;        
+    vector<Jugador> jugadores; 
     int turnoActual;
 
 public:
     JuegoDomino();
 
-    void agregarJugador(const std::string& nombre);
+    void agregarJugador(const string& nombre);
 
-    void iniciar();
-    void repartir();
     void barajar();
+    void repartir();
+    void iniciar();
+    void reiniciar();
 
     void mostrarMesa() const;
-    bool jugadaValida(const Ficha& f, bool& porIzquierda) const;
+    bool juegoTerminado() const;
 
     void jugar();
-    bool juegoTerminado() const;
-    void reiniciar();
 };
 
 #endif

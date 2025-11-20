@@ -7,29 +7,29 @@
 
 class polar; // declaración adelantada
 
-// ===================== CLASE COMPLEX ===================== //
-class complex {
+// ===================== CLASE complexNum ===================== //
+class complexNum {
 private:
     double a;  // parte real
     double b;  // parte imaginaria
 
 public:
     // Constructores
-    complex(double real = 0, double imag = 0);
-    complex(const polar& p);  // conversión de polar a binomial
+    complexNum(double real = 0, double imag = 0);
+    complexNum(const polar& p);  // conversión de polar a binomial
 
     // Getters
     double real() const { return a; }
     double imag() const { return b; }
 
     // Operadores
-    complex operator+(const complex& c) const;
-    complex operator-(const complex& c) const;
-    complex operator*(const complex& c) const;
-    complex operator/(const complex& c) const;
+    complexNum operator+(const complexNum& c) const;
+    complexNum operator-(const complexNum& c) const;
+    complexNum operator*(const complexNum& c) const;
+    complexNum operator/(const complexNum& c) const;
 
     // Conjugado
-    complex conj() const;
+    complexNum conj() const;
 
     // Conversión a polar
     polar toPolar() const;
@@ -47,7 +47,7 @@ private:
 public:
     // Constructores
     polar(double modulo = 0, double argumento = 0);
-    polar(const complex& c);  // conversión desde binomial
+    polar(const complexNum& c);  // conversión desde binomial
 
     // Getters
     double modulo() const { return r; }
@@ -62,14 +62,14 @@ public:
     // Conjugado
     polar conj() const;
 
-    // Conversión a complex
-    complex toComplex() const;
+    // Conversión a complexNumNum
+    complexNum toComplex() const;
 
     // Imprimir
     void imprimir() const;
 };
 
 // ========== Función acumula: suma múltiples complejos y polares ========== //
-complex acumula(const std::vector<complex>& listaC, const std::vector<polar>& listaP);
+complexNum acumula(const std::vector<complexNum>& listaC, const std::vector<polar>& listaP);
 
 #endif

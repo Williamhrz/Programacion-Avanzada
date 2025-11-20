@@ -155,7 +155,7 @@ int main() {
                 cin >> a;
                 cout << "Ingrese parte imaginaria: ";
                 cin >> b;
-                complex A(a, b);
+                complexNum A(a, b);
 
                 double r, t;
                 cout << "\nNúmero polar B (r, θ)\n";
@@ -218,6 +218,11 @@ int main() {
                 cout << "\nNúmero de jugadores (2-4): ";
                 cin >> jugadores;
 
+                while (jugadores < 2 || jugadores > 4) {
+                    cout << "Cantidad inválida. Ingrese un número entre 2 y 4: ";
+                    cin >> jugadores;
+                }
+
                 for (int i = 1; i <= jugadores; i++) {
                     string nombre;
                     cout << "Nombre del jugador " << i << ": ";
@@ -229,17 +234,13 @@ int main() {
                 game.jugar();
                 break;
             }
-
-            default:
-                cout << "\n Por favor ingrese una opción válida.\n";
         }
+            cout << "\n Presione ENTER para continuar...";
+            cin.ignore();
+            cin.get();
+            system("clear || cls");
 
-        cout << "\n Presione ENTER para continuar...";
-        cin.ignore();
-        cin.get();
-        system("clear || cls");
-
-    } while (true);
+        } while (true);
 
     return 0;
 }
