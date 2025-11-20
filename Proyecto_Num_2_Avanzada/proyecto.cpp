@@ -155,7 +155,7 @@ int main() {
                 cin >> a;
                 cout << "Ingrese parte imaginaria: ";
                 cin >> b;
-                complex A(a, b);
+                complexNum A(a, b);
 
                 double r, t;
                 cout << "\nNúmero polar B (r, θ)\n";
