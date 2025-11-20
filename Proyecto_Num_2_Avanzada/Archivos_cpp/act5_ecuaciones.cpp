@@ -1,4 +1,4 @@
-#include "act5_ecuaciones.hpp"
+#include "../Archivos_hpp/act5_ecuaciones.hpp"
 #include <sstream>
 using namespace std;
 

@@ -1,4 +1,4 @@
-#include "act3_polinomio.hpp"
+#include "../Archivos_hpp/act3_polinomio.hpp"
 #include <cmath>
 using namespace std;
 

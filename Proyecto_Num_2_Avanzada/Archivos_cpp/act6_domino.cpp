@@ -1,4 +1,4 @@
-#include "act6_domino.hpp"
+#include "../Archivos_hpp/act6_domino.hpp"
 #include <algorithm>
 #include <random>
 using namespace std;
@@ -77,8 +77,20 @@ bool Jugador::jugarFicha(int izq, int der, Ficha& fichaSalida, bool& porIzquierd
             return true;
         }
     }
-
     return false;
+}
+
+// ===== NUEVAS FUNCIONES PARA DETERMINAR GANADOR =====
+
+int Jugador::sumarPuntos() const {
+    int suma = 0;
+    for (const auto& f : mano)
+        suma += f.getA() + f.getB();
+    return suma;
+}
+
+int Jugador::cantidadFichas() const {
+    return mano.size();
 }
 
 // ======================== JUEGO DOMINO =========================
@@ -142,10 +154,17 @@ bool JuegoDomino::juegoTerminado() const {
     return false;
 }
 
+// ===================== LÓGICA COMPLETA DE JUEGO =====================
+
 void JuegoDomino::jugar() {
     cout << "\n=== INICIA EL JUEGO DEL DOMINO ===\n";
 
-    while (!juegoTerminado()) {
+    int bloqueos = 0;
+
+    while (true) {
+
+        if (juegoTerminado()) break;
+
         Jugador& j = jugadores[turnoActual];
 
         cout << "\nTurno de " << j.getNombre() << "\n";
@@ -157,9 +176,20 @@ void JuegoDomino::jugar() {
 
         if (!j.puedeJugar(izq, der)) {
             cout << j.getNombre() << " no puede jugar.\n";
+
+            bloqueos++;
+
+            if (bloqueos >= jugadores.size()) {
+                cout << "\n=== EL JUEGO SE HA BLOQUEADO ===\n";
+                break;
+            }
+
             turnoActual = (turnoActual + 1) % jugadores.size();
             continue;
         }
+
+        // Si jugó → desbloquear
+        bloqueos = 0;
 
         Ficha f;
         bool porIzq;
@@ -180,12 +210,39 @@ void JuegoDomino::jugar() {
 
     cout << "\n=== JUEGO TERMINADO ===\n";
 
+    // Caso 1: alguien ganó por quedarse sin fichas
     for (const auto& j : jugadores) {
         if (j.sinFichas()) {
             cout << "Ganador: " << j.getNombre() << " 🎉\n";
             return;
         }
     }
+
+    // Caso 2: juego bloqueado → determinar ganador
+    cout << "El juego terminó por bloqueo.\n";
+    cout << "Calculando ganador...\n";
+
+    int mejorJugador = -1;
+    int mejorPuntaje = 9999;
+    int menorFichas = 9999;
+
+    for (int i = 0; i < jugadores.size(); i++) {
+        int puntos = jugadores[i].sumarPuntos();
+        int cantFichas = jugadores[i].cantidadFichas();
+
+        cout << jugadores[i].getNombre()
+             << " → Puntos: " << puntos
+             << ", Fichas: " << cantFichas << "\n";
+
+        if (puntos < mejorPuntaje ||
+            (puntos == mejorPuntaje && cantFichas < menorFichas)) {
+            mejorPuntaje = puntos;
+            menorFichas = cantFichas;
+            mejorJugador = i;
+        }
+    }
+
+    cout << "\nGanador por bloqueo: " << jugadores[mejorJugador].getNombre() << " 🎉\n";
 }
 
 void JuegoDomino::reiniciar() {
