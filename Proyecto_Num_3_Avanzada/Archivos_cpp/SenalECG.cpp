@@ -15,8 +15,7 @@ SenalECG::SenalECG() {
 // Cargar archivo
 bool SenalECG::cargarDesdeArchivo(const string& nombreArchivo) {
 
-    ifstream file(nombreArchivo);
-
+    ifstream file("output/" + nombreArchivo);
     if (!file.is_open()) {
         cout << "Error: No se pudo abrir " << nombreArchivo << endl;
         return false;

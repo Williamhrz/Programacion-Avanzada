@@ -65,7 +65,7 @@ Explicación de la línea de compilación
 
 Una vez compilado, corre el programa con:
 
-./runproyect
+./output/runproyect
 
 
 Esto abrirá el menú interactivo:

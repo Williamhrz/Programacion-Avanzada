@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "Archivos_hpp/ListadoEstudiantil.hpp"
+#include "Archivos_hpp/listadoEstudiantil.hpp"
 #include "Archivos_hpp/SenalECG.hpp"
 #include "Archivos_hpp/Domino.hpp"
 
@@ -161,7 +161,7 @@ int main() {
 
     do {
         cout << "\n=====================================\n";
-        cout << "           PROYECTO FINAL\n";
+        cout << "           PROYECTO TP03\n";
         cout << "=====================================\n";
         cout << "1. Actividad 1: Listado estudiantil\n";
         cout << "2. Actividad 2: Senal ECG\n";

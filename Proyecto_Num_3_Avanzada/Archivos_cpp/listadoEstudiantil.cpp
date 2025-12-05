@@ -1,4 +1,4 @@
-#include "../Archivos_hpp/ListadoEstudiantil.hpp"
+#include "../Archivos_hpp/listadoEstudiantil.hpp"
 #include <iostream>
 #include <fstream>
 
@@ -76,7 +76,7 @@ int ListadoEstudiantil::buscar(long id) {
 
 // Imprimir lista en archivo txt
 void ListadoEstudiantil::imprimirEnArchivo(const string& archivo) {
-    ofstream file(archivo);
+    ofstream file("output/" + archivo);
 
     Nodo* aux = head;
     while (aux) {
