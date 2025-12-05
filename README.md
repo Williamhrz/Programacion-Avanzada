@@ -1,6 +1,6 @@
 Estructura del Repositorio
 
-El repositorio está organizado en dos carpetas principales, cada una correspondiente a un proyecto independiente desarrollado en C++ para la asignatura de **Programación Avanzada**.  
+El repositorio está organizado en tres carpetas principales, cada una correspondiente a un proyecto independiente desarrollado en C++ para la asignatura de **Programación Avanzada**.  
 Ambos proyectos están estructurados de manera modular para mantener un código limpio, ordenado y fácil de mantener.  
 Cada proyecto incluye un archivo **README.md** con instrucciones de compilación y ejecución.
 
@@ -37,11 +37,16 @@ Estructura interna
 - **README.md**  
   Documentación completa del proyecto, incluyendo requisitos, instrucciones de compilación, menú principal y descripción de cada ejercicio.
 
-- **runproyect**  
-  Ejecutable generado tras compilar el proyecto.  
-  Se ejecuta con:  
-  ```bash
-  ./runproyect
+- **output**  
+  Carpeta donde en primer lugar se generan los ejecutable generado tras compilar el proyecto y en segundo lugar estan las instrucciones de los ejecutable del proyecto para cada uno de sistemas operativos.
+
+  Se ejecuta en Linux (Desarrollado en Ubuntu):  
+    ```bash
+    ./runproyect
+
+  Se ejecuta en Windows:
+    ```bash
+    ./runproyect.bat
 
 Proyecto_Num_2 — TP02 Programación Avanzada
 
@@ -53,7 +58,7 @@ El proyecto incluye también un archivo principal que gestiona la ejecución gen
 
 Estructura interna
 
-- **proyecto2.cpp**  
+- **proyecto.cpp**  
   Archivo principal que contiene la función `main()` del TP02.  
   Desde aquí se controlan las opciones del programa y se enlazan los distintos módulos.
 
@@ -85,10 +90,15 @@ Estructura interna
 
   Documento que explica el propósito del proyecto, su funcionamiento, la descripción de cada módulo y las instrucciones para compilar y ejecutar el programa.
 
-- **Ejecutable — runproyect02**
+- **output**
+  Carpeta que agrupa los ejecutable generado después de la compilación del TP02, como tambien los archivos de isntrucciones para ejecutar en cada sistema operativo.
 
-  Ejecutable generado después de la compilación del TP02.  
-  Para ejecutar:
+  Para ejecutar en Linux (Desarrollado en Ubuntu):
 
 ```bash
-./runproyect02
+./runproyect
+
+  Para ejecutarlo en Windows:
+
+```bash
+./runproyect.bat
