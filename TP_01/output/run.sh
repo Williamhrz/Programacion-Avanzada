@@ -6,7 +6,7 @@ g++ ../proyecto.cpp ../Archivos_cpp/*.cpp -I ../Archivos_hpp -o proyecto
 if [ $? -eq 0 ]; then
     echo "Compilación exitosa."
     echo "Ejecutando el programa..."
-    ./output/proyecto
+    ./proyecto
 else
     echo "Error en la compilación."
 fi
