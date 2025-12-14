@@ -1,6 +1,7 @@
 #ifndef LISTADO_ESTUDIANTIL_HPP
 #define LISTADO_ESTUDIANTIL_HPP
 #include <string>
+
 using namespace std;
 
 struct Estudiante {

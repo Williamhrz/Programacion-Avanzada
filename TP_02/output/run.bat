@@ -1,24 +1,10 @@
 @echo off
-echo Compilando...
-
-g++ proyecto.cpp ^
-Archivos_cpp/act1_vector3D.cpp ^
-Archivos_cpp/act2_matriz.cpp ^
-Archivos_cpp/act3_polinomio.cpp ^
-Archivos_cpp/act4_complejos.cpp ^
-Archivos_cpp/act5_ecuaciones.cpp ^
-Archivos_cpp/act6_domino.cpp ^
--I Archivos_hpp -o output/proyecto.exe
-
-if %errorlevel% neq 0 (
-    echo.
-    echo Error en la compilacion.
-    pause
-    exit /b
+echo Compilando Sinfonia de Codigo...
+g++ -I ../Archivos_hpp ../Proyecto.cpp ../Archivos_cpp/*.cpp -o ./executable/proyecto.exe
+if %errorlevel% equ 0 (
+    echo Ejecutando aplicacion...
+    ./executable/proyecto.exe
+) else (
+    echo Error de compilacion.
 )
-
-echo.
-echo Ejecutando...
-output\proyecto.exe
-
 pause

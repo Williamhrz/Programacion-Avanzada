@@ -10,10 +10,11 @@ namespace puzzle {
 
     struct Estado {
         Tablero tablero;
-        int x, y; // Posición del 0 (espacio vacío)
-        std::string movimientos; // Historial de movimientos (U, D, L, R)
+        int x, y; // Coordenadas del 0 (espacio vacío)
+        std::string movimientos; // Historial (L, R, U, D)
     };
 
+    // Función principal pública
     void ejecutarPuzzle();
 }
 
