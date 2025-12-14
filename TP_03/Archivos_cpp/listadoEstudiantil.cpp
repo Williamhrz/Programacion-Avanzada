@@ -8,7 +8,7 @@ ListadoEstudiantil::ListadoEstudiantil() {
     size = 0;
 }
 
-// Destructor: liberar memoria
+// Destructor
 ListadoEstudiantil::~ListadoEstudiantil() {
     Nodo* actual = head;
     while (actual) {
@@ -38,7 +38,6 @@ void ListadoEstudiantil::insertarFinal(const Estudiante& e) {
 bool ListadoEstudiantil::eliminarPorID(long id) {
     if (!head) return false;
 
-    // Si el primer nodo es el que se elimina
     if (head->data.id == id) {
         Nodo* temp = head;
         head = head->next;
@@ -47,12 +46,11 @@ bool ListadoEstudiantil::eliminarPorID(long id) {
         return true;
     }
 
-    // Buscar nodo
     Nodo* aux = head;
     while (aux->next && aux->next->data.id != id)
         aux = aux->next;
 
-    if (!aux->next) return false; // no encontrado
+    if (!aux->next) return false;
 
     Nodo* temp = aux->next;
     aux->next = aux->next->next;
@@ -71,12 +69,17 @@ int ListadoEstudiantil::buscar(long id) {
         aux = aux->next;
         pos++;
     }
-    return -1; // no encontrado
+    return -1;
 }
 
-// Imprimir lista en archivo txt
-void ListadoEstudiantil::imprimirEnArchivo(const string& archivo) {
-    ofstream file("output/" + archivo);
+// Imprimir lista en archivo
+void ListadoEstudiantil::imprimirEnArchivo(const string& ruta) {
+    ofstream file(ruta);
+
+    if (!file.is_open()) {
+        cout << "Error: no se pudo crear el archivo " << ruta << endl;
+        return;
+    }
 
     Nodo* aux = head;
     while (aux) {
@@ -107,6 +110,7 @@ void ListadoEstudiantil::invertirLista() {
     head = prev;
 }
 
+// Imprimir lista
 void ListadoEstudiantil::imprimirLista() {
     Nodo* aux = head;
 
@@ -126,7 +130,6 @@ void ListadoEstudiantil::imprimirLista() {
         aux = aux->next;
     }
 }
-
 
 // Operador []
 Estudiante& ListadoEstudiantil::operator[](int index) {
