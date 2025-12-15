@@ -1,11 +1,11 @@
-Proyecto académico — Programación Avanzada (C++)
+**Proyecto académico — Programación Avanzada (C++)**
 
 Este proyecto implementa los seis ejercicios del **Trabajo Práctico 02** de la asignatura Programación Avanzada, desarrollados en C++ con un enfoque modular, orientado a objetos y organizado en múltiples librerías (.hpp y .cpp).  
 Incluye manejo de clases, sobrecarga de operadores, memoria dinámica, polinomios, números complejos, estructuras algebraicas y un juego completo de dominó.
 
 ---
 
-Estructura del proyecto
+**Estructura del proyecto**
 
 TP02_ProgramacionAvanzada/
 
@@ -27,8 +27,8 @@ TP02_ProgramacionAvanzada/
 
 - proyecto.cpp               # Archivo principal (menú general)
 - README.md                  
-- runproyect                 # Ejecutable
-
+- output/                    # Carpeta de salida
+    - runproyect              # Ejecutable
 
 ---
 
@@ -40,16 +40,15 @@ TP02_ProgramacionAvanzada/
 
 ---
 
-**Compilación y ejecución**
+**Compilación del proyecto**
 
 Desde la carpeta principal del proyecto, abre una terminal y ejecuta:
 
-g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o runproyect
-
+g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/runproyect
 
 ---
 
-Explicación de la línea de compilación
+**Explicación de la línea de compilación**
 
 | Parte                | Descripción                                 |
 | -------------------- | ------------------------------------------- |
@@ -57,18 +56,43 @@ Explicación de la línea de compilación
 | `proyecto.cpp`       | Archivo principal con el menú general       |
 | `Archivos_cpp/*.cpp` | Compila todos los módulos del proyecto      |
 | `-I Archivos_hpp`    | Indica dónde están los archivos `.hpp`      |
-| `-o runproyect`      | Crea el ejecutable con ese nombre           |
+| `-o output/runproyect` | Crea el ejecutable dentro de la carpeta output |
 
 ---
 
-**Ejecutar el programa**
+**Ejecución del programa**
 
-Una vez compilado, corre el programa con:
+Una vez compilado, el ejecutable queda ubicado en la carpeta **output**.
 
-./output/runproyect
+---
 
+**Linux / macOS / WSL**
 
-Esto abrirá el menú interactivo:
+1. Ubicarse en la carpeta del proyecto
+2. Entrar a la carpeta output:
+
+cd output
+
+3. Ejecutar el programa:
+
+./runproyect
+
+---
+
+**Windows (PowerShell o CMD)**
+
+1. Ubicarse en la carpeta del proyecto
+2. Entrar a la carpeta output:
+
+cd output
+
+3. Ejecutar el programa:
+
+runproyect.exe
+
+---
+
+Al ejecutarse, se mostrará el menú interactivo:
 
 ==========  MENÚ DE EJECUCIÓN  ==========
 1. Vector3D
@@ -78,7 +102,6 @@ Esto abrirá el menú interactivo:
 5. Ecuaciones algebraicas
 6. Juego de Dominó
 0. Salir
-
 
 El usuario debe escribir el número del ejercicio que desea ejecutar.
 
@@ -107,13 +130,13 @@ El programa mostrará instrucciones y pedirá los datos necesarios.
 
 **Ingreso:**
 
-Ingrese vector A (x y z): ax ay az
-Ingrese vector B (x y z): bx by bz
+Ingrese vector A (x y z): ax ay az  
+Ingrese vector B (x y z): bx by bz  
 
 **Ejemplo:**
 
-1 2 3
-4 5 6
+1 2 3  
+4 5 6  
 
 **Operaciones:**
 - Suma  
@@ -128,8 +151,7 @@ Ingrese vector B (x y z): bx by bz
 
 **Ingreso:**
 
-Tamaño de la matriz NxN: n
-
+Tamaño de la matriz NxN: n  
 
 **Operaciones:**
 - Matriz generada aleatoriamente  
@@ -142,9 +164,8 @@ Tamaño de la matriz NxN: n
 
 **Ingreso:**
 
-Ingrese grado del polinomio P: g
-Ingrese valor de x: x
-
+Ingrese grado del polinomio P: g  
+Ingrese valor de x: x  
 
 **Operaciones:**
 - Evaluación P(x)  
@@ -156,15 +177,13 @@ Ingrese valor de x: x
 
 **Ingreso del complejo A:**
 
-Ingrese parte real: a
-Ingrese parte imaginaria: b
-
+Ingrese parte real: a  
+Ingrese parte imaginaria: b  
 
 **Ingreso del polar B:**
 
-Ingrese módulo: r
-Ingrese ángulo: t
-
+Ingrese módulo: r  
+Ingrese ángulo: t  
 
 **Operaciones:**
 - A + B  
@@ -177,11 +196,11 @@ Ingrese ángulo: t
 
 **Ingreso:**
 
-Cantidad de términos de P: n1
-Coeficiente y exponente: c e
+Cantidad de términos de P: n1  
+Coeficiente y exponente: c e  
 
-Cantidad de términos de Q: n2
-Coeficiente y exponente: c e
+Cantidad de términos de Q: n2  
+Coeficiente y exponente: c e  
 
 **Operaciones:**
 - P(x)  
@@ -195,11 +214,10 @@ Coeficiente y exponente: c e
 
 **Ingreso:**
 
-Número de jugadores (2-4): n
-Nombre del jugador 1: x
-Nombre del jugador 2: y
+Número de jugadores (2-4): n  
+Nombre del jugador 1: x  
+Nombre del jugador 2: y  
 ...
-
 
 El sistema realiza automáticamente la simulación.
 
@@ -213,7 +231,3 @@ El sistema realiza automáticamente la simulación.
 
 **Estudiantes de Ingeniería Mecatrónica**  
 **Universidad Nacional de Colombia — Sede De la Paz**
-
-
-
-
