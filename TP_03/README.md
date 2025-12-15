@@ -69,17 +69,16 @@ cd output
 
 3. Ejecutar el programa:
 
-    ```bash
-        ./run.sh
-    ```
+```bash
+    ./run.sh
+```
 
 Si se genera algun problema de permisos y ejecute:
 
-    ```bash
-    chmod +x build.sh
-    ./run.sh
-    ```
-
+```bash
+chmod +x build.sh
+./run.sh
+```
 ---
 
 **Windows**
@@ -91,16 +90,15 @@ cd output
 
 3. Ejecutar el programa:
 
-    ```bash
-        run.bat
-    ```
+```bash
+    run.bat
+```
 
 Otra forma para poder ejecutarlo seria esta:
 
-    ```bash
-        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto_run.exe
-
-    ```
+```bash
+    g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto_run.exe
+```
 ---
 
 Al ejecutarse, se mostrará el menú general:

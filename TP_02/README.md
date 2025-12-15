@@ -73,16 +73,16 @@ cd output
 
 3. Ejecutar el programa:
 
-    ```bash
-        ./run.sh
-    ```
+```bash
+    ./run.sh
+```
 
 Si genera problemas intentar con:
 
-    ```bash
-        chmod +x build.sh
-        ./run.sh
-    ```
+```bash
+    chmod +x build.sh
+    ./run.sh
+```
 
 ---
 
@@ -95,15 +95,15 @@ cd output
 
 3. Ejecutar el programa:
 
-    ```cmd
-    run.bat
-    ```
+```cmd
+run.bat
+```
 
 Otra forma de hacer correr el programa es la siguiente:
 
-    ```cmd
-        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
-    ```
+```cmd
+    g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
+```
 
 Este se ejecuta desde la carpeta principal
 
