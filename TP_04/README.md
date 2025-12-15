@@ -1,6 +1,46 @@
-# Trabajo Práctico No. 4: Aplicaciones Avanzadas en C++
-**Ingeniería Mecatrónica - Universidad Nacional de Colombia**
+**Proyecto académico — Programación Avanzada (C++)**
 
+Este proyecto corresponde al desarrollo del **Trabajo Práctico 04 (TP04)** de la asignatura Programación Avanzada.  
+El taller integra algoritmos de búsqueda, simulación de sistemas, hardware-in-the-loop (HIL) y clasificación mediante redes neuronales artificiales (RNA).
+
+El proyecto está organizado de forma modular y controlado desde un menú principal.
+
+---
+
+**Estructura del proyecto**
+
+TP04_ProgramacionAvanzada/
+
+- Archivos_cpp/
+    - puzzle.cpp
+    - HIL.cpp
+    - RNA.cpp
+
+- Archivos_hpp/
+    - puzzle.hpp
+    - HIL.hpp
+    - RNA.hpp
+
+- proyecto.cpp               # Archivo principal (menú general)
+- README.md
+- output/
+    - ejecutables y archivos generados
+
+---
+
+**Requisitos**
+
+- Compilador: **g++ (C++17 o superior)**
+- Sistema operativo: **Linux, macOS o Windows (WSL / PowerShell)**
+- Editor recomendado: **Visual Studio Code**
+
+---
+
+**Compilación del proyecto**
+
+Desde la carpeta principal del proyecto, ejecutar:
+
+g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/proyecto.exe
 ## Descripción General
 Este proyecto implementa tres aplicaciones de ingeniería avanzada desarrolladas en C++ bajo un enfoque de **programación modular y orientada a objetos**. El sistema integra algoritmos de búsqueda en espacios de estados, simulación de sistemas dinámicos en tiempo real (HIL) e Inteligencia Artificial (Redes Neuronales), gestionados mediante una arquitectura centralizada.
 
@@ -17,34 +57,74 @@ La organización de archivos del proyecto es la siguiente:
 * **`proyecto.cpp`**: Archivo principal (Main).
 ---
 
-## Metodología de Resolución
+**Ejecución del programa**
 
-A continuación se detalla la lógica utilizada para resolver cada punto del taller:
+**Linux / macOS / WSL**
 
-### 1. 8-Puzzle (Rompecabezas de 8 piezas)
-* **Problema:** Encontrar la secuencia óptima para ordenar un tablero $3\times3$.
-* **Algoritmo:** Se implementó una búsqueda en anchura (**BFS**) para garantizar la solución más corta (óptima).
-* **Recursividad:** Se utiliza una función recursiva para reconstruir e imprimir ("backtracking") el historial de movimientos desde el estado meta hasta el inicio una vez encontrada la solución.
-* **Salida:** Los movimientos se muestran en consola y se guardan en `resultado_puzzle.txt`.
+cd output  
+./proyecto.exe
 
-### 2. Simulación Hardware in the Loop (HIL)
-* **Problema:** Simular una planta SISO y un derivador de orden superior.
-* **Modelo:**
-    * **Planta:** Se discretizó la ecuación de transferencia $G(s)$ simulando una respuesta inercial ante entradas escalón/senoidal.
-    * **Derivador:** Se implementaron las ecuaciones de diferenciación robusta (Super-Twisting/HOSM) descritas en la guía (Ec. 2), utilizando la función $\varphi$ no lineal.
-* **Recursividad:** La simulación temporal $t_k$ se maneja a través de una función recursiva que calcula el estado $k+1$ basado en $k$, sustituyendo los bucles `for` tradicionales para mantener el paradigma del proyecto.
-* **Salida:** Genera `datos_planta.txt` con columnas tabuladas para análisis gráfico externo (Excel/Matlab).
+**Windows (PowerShell / CMD)**
 
-### 3. Clasificación RNA (Red Neuronal Artificial)
-* **Problema:** Clasificar números naturales leídos de un archivo.
-* **Lógica de Clasificación:**
-    * Clase 0 (Pares): $n \% 2 == 0$.
-    * Clase 1 (Impares): $n \% 2 \neq 0$.
-    * Clase 2 (Primos): Algoritmo de primalidad clásico.
-    * Clase 3 (Compuestos): $n > 1$ y no primo.
-* **Recursividad:** El procesamiento del archivo `digitos.txt` se realiza mediante una función recursiva que lee línea por línea hasta encontrar el `EOF` (End Of File), procesando y logueando cada número individualmente.
+cd output  
+proyecto.exe
 
 ---
+
+**Menú principal**
+
+1. 8-Puzzle (BFS recursivo)
+2. Simulación Planta / Derivador (HIL)
+3. Clasificación RNA (Dígitos)
+0. Salir
+
+---
+
+**Descripción de las actividades**
+
+| Actividad | Descripción |
+|----------|-------------|
+| **1. 8-Puzzle** | Resolución del problema del 8-puzzle usando búsqueda BFS. |
+| **2. Simulación HIL** | Simulación de una planta con derivador en lazo cerrado. |
+| **3. RNA** | Clasificación de datos mediante una red neuronal artificial. |
+
+---
+
+**Detalle de las actividades**
+
+---
+
+**1. 8-Puzzle**
+
+- Implementa el algoritmo BFS
+- Muestra pasos de resolución
+- Representación matricial del estado del tablero
+
+---
+
+**2. Simulación Planta / Derivador (HIL)**
+
+- Simulación de sistema dinámico
+- Evaluación del comportamiento de la señal
+- Separación clara entre modelo y controlador
+
+---
+
+**3. Clasificación mediante RNA**
+
+- Clasificación de patrones
+- Uso de pesos y funciones de activación
+- Evaluación del resultado de clasificación
+
+---
+
+**Autores**
+
+- _**William A. Hernández A.**_  
+- _**Jesús D. Angulo B.**_
+
+**Estudiantes de Ingeniería Mecatrónica**  
+**Universidad Nacional de Colombia — Sede De la Paz**
 ## Instrucciones de Compilación y Ejecución
 
 ### Requisitos Previos
