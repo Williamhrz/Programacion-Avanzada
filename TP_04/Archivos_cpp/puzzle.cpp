@@ -4,35 +4,115 @@
 #include <queue>
 #include <set>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 
 namespace puzzle {
 
-    // Meta: 
-    // 1 2 3
-    // 4 5 6
-    // 7 8 0
-    const Tablero META = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
+    // META SEGÚN FIGURA 2 (Espiral):
+    const Tablero META = {
+        {1, 2, 3},
+        {8, 0, 4},
+        {7, 6, 5}
+    };
 
-    // Función auxiliar para imprimir recursivamente
-    void imprimirRecursivo(const string& pasos, int index) {
-        if (index >= pasos.length()) return;
-        
-        string movimiento;
-        if (pasos[index] == 'U') movimiento = "Arriba";
-        else if (pasos[index] == 'D') movimiento = "Abajo";
-        else if (pasos[index] == 'L') movimiento = "Izquierda";
-        else if (pasos[index] == 'R') movimiento = "Derecha";
+    const string RUTA_SALIDA = "exit/resultado_puzzle.txt";
 
-        string log = "Paso " + to_string(index + 1) + ": Mover " + movimiento;
-        cout << log << endl;
-        auto_save::guardarLog("resultado_puzzle.txt", log);
+    // Genera el dibujo del tablero
+    string formatearTableroConMovimiento(const Tablero& t, const string& infoMovimiento) {
+        stringstream ss;
+        ss << "-------------" << endl;
+        for (int i = 0; i < 3; i++) {
+            ss << "| ";
+            for (int val : t[i]) {
+                if(val == 0) ss << "  | "; 
+                else ss << val << " | ";
+            }
+            if (i == 1 && !infoMovimiento.empty()) {
+                ss << "   <--- " << infoMovimiento;
+            }
+            ss << endl << "-------------" << endl;
+        }
+        return ss.str();
+    }
 
-        imprimirRecursivo(pasos, index + 1);
+    // Función recursiva corregida (Invierte la perspectiva Cero vs Pieza)
+    void imprimirRecursivo(const string& pasos, int index, Estado actual) {
+        if (index > pasos.length()) return;
+
+        string textoMovimiento = "";
+        if (index == 0) {
+            textoMovimiento = "Estado Inicial";
+        } else {
+            char m = pasos[index-1]; 
+            // CORRECCIÓN AQUÍ: Invertimos los textos para reflejar el movimiento de la PIEZA
+            // Si el 0 (vacio) sube 'U', la pieza baja.
+            if (m == 'U') textoMovimiento = "Mover Pieza Abajo (Down)";   // Antes era Arriba
+            else if (m == 'D') textoMovimiento = "Mover Pieza Arriba (Up)"; // Antes era Abajo
+            else if (m == 'L') textoMovimiento = "Mover Pieza Derecha (Right)"; // Antes era Izq
+            else if (m == 'R') textoMovimiento = "Mover Pieza Izquierda (Left)"; // Antes era Der
+        }
+
+        // Mostrar y Guardar
+        string dibujo = formatearTableroConMovimiento(actual.tablero, textoMovimiento);
+        cout << "\n--- Paso " << index << " ---" << endl;
+        cout << dibujo;
+        auto_save::guardarLog(RUTA_SALIDA, "Paso " + to_string(index));
+        auto_save::guardarLog(RUTA_SALIDA, dibujo);
+
+        if (index == pasos.length()) return;
+
+        // Física del movimiento (Esta NO cambia, solo cambió el texto)
+        char mov = pasos[index];
+        int dx = 0, dy = 0;
+        if (mov == 'U') dx = -1;      // 0 sube
+        else if (mov == 'D') dx = 1;  // 0 baja
+        else if (mov == 'L') dy = -1; // 0 izquierda
+        else if (mov == 'R') dy = 1;  // 0 derecha
+
+        Estado siguiente = actual;
+        swap(siguiente.tablero[actual.x][actual.y], siguiente.tablero[actual.x + dx][actual.y + dy]);
+        siguiente.x = actual.x + dx;
+        siguiente.y = actual.y + dy;
+
+        imprimirRecursivo(pasos, index + 1, siguiente);
     }
 
     bool esMeta(const Tablero& t) { return t == META; }
+
+    Estado pedirConfiguracionInicial() {
+        Estado e;
+        e.tablero.resize(3, vector<int>(3));
+        vector<bool> usados(9, false);
+        
+        cout << "\n=== CONFIGURACION 8-PUZZLE ===" << endl;
+        cout << "Ingrese los numeros fila por fila (0 es el vacio)." << endl;
+        cout << "Meta Espiral: \n1 2 3\n8 0 4\n7 6 5" << endl;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int val;
+                while (true) {
+                    cout << "Posicion [" << i << "][" << j << "]: ";
+                    cin >> val;
+                    if (val >= 0 && val <= 8 && !usados[val]) {
+                        usados[val] = true;
+                        e.tablero[i][j] = val;
+                        if (val == 0) {
+                            e.x = i;
+                            e.y = j;
+                        }
+                        break;
+                    } else {
+                        cout << "Numero repetido o invalido." << endl;
+                    }
+                }
+            }
+        }
+        e.movimientos = "";
+        return e;
+    }
 
     void resolverBFS(Estado inicial) {
         queue<Estado> cola;
@@ -40,7 +120,7 @@ namespace puzzle {
         set<Tablero> visitados;
         visitados.insert(inicial.tablero);
 
-        // Vectores de desplazamiento: Arriba, Abajo, Izq, Der
+        // Movimientos internos del 0: U, D, L, R
         int dx[] = {-1, 1, 0, 0};
         int dy[] = {0, 0, -1, 1};
         char movs[] = {'U', 'D', 'L', 'R'};
@@ -52,17 +132,13 @@ namespace puzzle {
             cola.pop();
 
             if (esMeta(actual.tablero)) {
-                string msg = "Solucion encontrada en " + to_string(actual.movimientos.length()) + " pasos.";
-                cout << msg << endl;
-                auto_save::guardarLog("resultado_puzzle.txt", "\n--- NUEVA SOLUCION ---");
-                auto_save::guardarLog("resultado_puzzle.txt", msg);
-                
-                // Llamada recursiva para imprimir/guardar pasos
-                imprimirRecursivo(actual.movimientos, 0);
+                cout << "\n!!! SOLUCION ENCONTRADA !!!" << endl;
+                cout << "Pasos: " << actual.movimientos.length() << endl;
+                auto_save::guardarLog(RUTA_SALIDA, "\n=== NUEVA SOLUCION ===");
+                imprimirRecursivo(actual.movimientos, 0, inicial);
                 return;
             }
 
-            // Generar hijos
             for (int i = 0; i < 4; i++) {
                 int nx = actual.x + dx[i];
                 int ny = actual.y + dy[i];
@@ -81,22 +157,11 @@ namespace puzzle {
                 }
             }
         }
-        cout << "No se encontro solucion." << endl;
+        cout << "Sin solucion." << endl;
     }
 
     void ejecutarPuzzle() {
-        // Ejemplo de configuración inicial (Fig 1 del PDF)
-        // 4 1 3
-        // 5 7 2
-        // 8 0 6
-        // Nota: Ajustado para que sea solucionable en tiempo razonable para el ejemplo
-        Estado inicio;
-        inicio.tablero = {{1, 2, 3}, {4, 5, 0}, {7, 8, 6}}; // Estado cercano a meta para prueba rápida
-        inicio.x = 1; 
-        inicio.y = 2;
-        inicio.movimientos = "";
-
-        cout << "--- Actividad 1: 8-Puzzle ---" << endl;
+        Estado inicio = pedirConfiguracionInicial();
         resolverBFS(inicio);
     }
 }

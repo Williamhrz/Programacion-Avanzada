@@ -5,7 +5,6 @@
 #include <string>
 
 class SenalECG {
-
 private:
     std::vector<float> tiempo;
     std::vector<float> amplitud;
@@ -13,20 +12,19 @@ private:
     std::vector<float> picos;
 
 public:
+    // Constructor
     SenalECG();
 
-    bool cargarDesdeArchivo(const std::string& nombreArchivo);
-
+    // Métodos pedidos por el taller
+    bool cargarDesdeArchivo(const std::string& ruta);
     void filtrarSenal();
-
     void detectarPicos(float umbral);
+    void guardarEnArchivo(const std::string& ruta);
+    float calcularFrecuenciaCardiaca() const;
 
-    void guardarEnArchivo(const std::string& nombre);
+    int cantidadMuestras() const;
 
-    float calcularFrecuenciaCardiaca();
-
-    int cantidadMuestras() const { return tiempo.size(); }
-
+    // Destructor
     ~SenalECG();
 };
 

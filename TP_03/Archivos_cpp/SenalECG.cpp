@@ -1,114 +1,111 @@
 #include "../Archivos_hpp/SenalECG.hpp"
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
 // Constructor
-SenalECG::SenalECG() {
-    tiempo = {};
-    amplitud = {};
-    filtrada = {};
-    picos = {};
-}
+SenalECG::SenalECG() {}
 
-// Cargar archivo
-bool SenalECG::cargarDesdeArchivo(const string& nombreArchivo) {
+// Cargar señal desde archivo
+bool SenalECG::cargarDesdeArchivo(const string& ruta) {
 
-    ifstream file("output/" + nombreArchivo);
+    ifstream file(ruta);
     if (!file.is_open()) {
-        cout << "Error: No se pudo abrir " << nombreArchivo << endl;
+        cout << "Error: No se pudo abrir el archivo " << ruta << endl;
         return false;
     }
 
     tiempo.clear();
     amplitud.clear();
 
-    float amp, t;
+    float val1, val2;
+    char separador; // Variable para "comerse" la coma
 
-    while (file >> amp >> t) {
-        amplitud.push_back(amp);
-        tiempo.push_back(t);
+    // El archivo tiene el formato: Valor1,Valor2
+    // Usamos 'separador' para leer la coma y que no rompa el flujo
+    while (file >> val1 >> separador >> val2) {
+        
+        // Según tu ECG.txt:
+        // val1 es la Amplitud (primera columna)
+        // val2 es el Tiempo (segunda columna: 0, 0.005...)
+        
+        amplitud.push_back(val1);
+        tiempo.push_back(val2);
     }
 
     file.close();
-    return true;
-}
 
-// FILTRO PASA BAJOS IIR (CORREGIDO)
+    cout << "Muestras cargadas: " << tiempo.size() << endl;
+    
+    // Retorna true solo si realmente cargó algo
+    return !tiempo.empty(); 
+}
+// Filtro pasa bajos simple
 void SenalECG::filtrarSenal() {
 
     if (amplitud.empty()) return;
 
-    filtrada.clear();
     filtrada.resize(amplitud.size());
 
-    float alpha = 0.5f;       // VALOR CORREGIDO (antes era 0.1)
+    float alpha = 0.5f;
     filtrada[0] = amplitud[0];
 
-    for (int i = 1; i < amplitud.size(); i++) {
-        filtrada[i] = alpha * amplitud[i] + (1 - alpha) * filtrada[i - 1];
+    for (size_t i = 1; i < amplitud.size(); i++) {
+        filtrada[i] = alpha * amplitud[i] +
+                      (1 - alpha) * filtrada[i - 1];
     }
 }
 
-// DETECCIÓN DE PICOS (CORREGIDO)
+// Detección de picos
 void SenalECG::detectarPicos(float umbral) {
 
     picos.clear();
 
-    for (int i = 1; i < filtrada.size() - 1; i++) {
+    for (size_t i = 1; i < filtrada.size() - 1; i++) {
+        if (filtrada[i] > filtrada[i - 1] &&
+            filtrada[i] > filtrada[i + 1] &&
+            filtrada[i] > umbral) {
 
-        float prev = filtrada[i - 1];
-        float cur  = filtrada[i];
-        float next = filtrada[i + 1];
-
-        // pico si es máximo local y supera el umbral
-        if (cur > prev && cur > next && cur > umbral) {
             picos.push_back(tiempo[i]);
         }
     }
 }
 
-// Guardar señal en archivo
-void SenalECG::guardarEnArchivo(const string& nombre) {
+// Guardar señal original y filtrada
+void SenalECG::guardarEnArchivo(const string& ruta) {
 
-    ofstream out(nombre);
+    ofstream out(ruta);
 
-    for (int i = 0; i < tiempo.size(); i++) {
+    for (size_t i = 0; i < tiempo.size(); i++) {
         out << tiempo[i] << " "
             << amplitud[i] << " "
-            << filtrada[i] << "\n";
+            << filtrada[i] << endl;
     }
 
     out.close();
 }
 
 // Calcular frecuencia cardiaca
-float SenalECG::calcularFrecuenciaCardiaca() {
+float SenalECG::calcularFrecuenciaCardiaca() const {
 
-    if (picos.size() < 2)
-        return 0;
+    if (picos.size() < 2) return 0;
 
-    float sumaRR = 0;
-    int count = 0;
-
-    for (int i = 0; i < picos.size() - 1; i++) {
-        sumaRR += (picos[i + 1] - picos[i]);
-        count++;
+    float suma = 0;
+    for (size_t i = 1; i < picos.size(); i++) {
+        suma += (picos[i] - picos[i - 1]);
     }
 
-    float RR = sumaRR / count;
+    float rr = suma / (picos.size() - 1);
+    if (rr <= 0) return 0;
 
-    if (RR <= 0)
-        return 0;
+    return 60.0f / rr;
+}
 
-    return 60.0f / RR;
+int SenalECG::cantidadMuestras() const {
+    return tiempo.size();
 }
 
 // Destructor
-SenalECG::~SenalECG() {
-    tiempo.clear();
-    amplitud.clear();
-    filtrada.clear();
-    picos.clear();
-}
+SenalECG::~SenalECG() {}

@@ -6,7 +6,7 @@ Cada proyecto incluye un archivo **README.md** con instrucciones de compilación
 
 ---
 
-Proyecto_Num_1 — TP01 Programación Avanzada
+Proyecto TP_01 Programación Avanzada
 
 Esta carpeta contiene el desarrollo completo del **Trabajo Práctico 01**.  
 Su estructura interna está organizada modularmente para separar el código principal de las implementaciones y definiciones auxiliares.

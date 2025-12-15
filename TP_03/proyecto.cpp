@@ -29,7 +29,7 @@ void actividad1() {
         if (opcion == 1) {
             Estudiante e;
             cout << "Nombre: "; cin >> e.nombre;
-            cout << "fecha de nacimiento (YYYY): "; cin >> e.anioNacimiento;
+            cout << "Año nacimiento: "; cin >> e.anioNacimiento;
             cout << "ID: "; cin >> e.id;
             cout << "Promedio: "; cin >> e.promedio;
             cout << "Email: "; cin >> e.email;
@@ -57,10 +57,10 @@ void actividad1() {
 
         else if (opcion == 4) {
             string nombre;
-            cout << "Nombre archivo: ";
+            cout << "Nombre archivo salida: ";
             cin >> nombre;
-            lista.imprimirEnArchivo(nombre);
-            cout << "Archivo generado.\n";
+            lista.imprimirEnArchivo("exit/" + nombre);
+            cout << "Archivo generado en output/exit/ .\n";
         }
 
         else if (opcion == 5) {
@@ -75,8 +75,6 @@ void actividad1() {
     } while (opcion != 0);
 }
 
-
-
 // ====================================================
 //                MENÚ ACTIVIDAD 2
 // ====================================================
@@ -86,25 +84,25 @@ void actividad2() {
     int opcion;
 
     do {
-        cout << "\n=== ACTIVIDAD 2: SENAL ECG ===\n";
+        cout << "\n=== ACTIVIDAD 2: SEÑAL ECG ===\n";
         cout << "1. Cargar señal desde archivo\n";
-        cout << "2. Filtrar senal\n";
+        cout << "2. Filtrar señal\n";
         cout << "3. Detectar picos\n";
-        cout << "4. Guardar senal filtrada en archivo\n";
+        cout << "4. Guardar señal filtrada\n";
         cout << "5. Calcular frecuencia cardiaca\n";
         cout << "0. Volver\n";
         cout << "Opcion: ";
         cin >> opcion;
 
         if (opcion == 1) {
-            cout << "Archivo: ";
+            cout << "Archivo (en output/data): ";
             cin >> archivo;
-            ecg.cargarDesdeArchivo(archivo);
+            ecg.cargarDesdeArchivo("data/" + archivo);
         }
 
         else if (opcion == 2) {
             ecg.filtrarSenal();
-            cout << "Senal filtrada.\n";
+            cout << "Señal filtrada.\n";
         }
 
         else if (opcion == 3) {
@@ -116,20 +114,20 @@ void actividad2() {
         }
 
         else if (opcion == 4) {
-            cout << "Archivo salida: ";
+            cout << "Archivo salida (en output/): ";
             cin >> archivo;
-            ecg.guardarEnArchivo(archivo);
+            ecg.guardarEnArchivo("exit/" + archivo);
+            cout << "Archivo guardado en output/exit .\n";
         }
 
         else if (opcion == 5) {
             float f = ecg.calcularFrecuenciaCardiaca();
-            cout << "Frecuencia cardiaca: " << f << " BPM\n";
+            cout << "Frecuencia cardiaca estimada: "
+                 << f << " BPM\n";
         }
 
     } while (opcion != 0);
 }
-
-
 
 // ====================================================
 //                MENÚ ACTIVIDAD 3
@@ -150,8 +148,6 @@ void actividad3() {
     juego.jugar();
 }
 
-
-
 // ====================================================
 //                       MAIN
 // ====================================================
@@ -161,10 +157,10 @@ int main() {
 
     do {
         cout << "\n=====================================\n";
-        cout << "           PROYECTO TP03\n";
+        cout << "           PROYECTO TP_03\n";
         cout << "=====================================\n";
         cout << "1. Actividad 1: Listado estudiantil\n";
-        cout << "2. Actividad 2: Senal ECG\n";
+        cout << "2. Actividad 2: Señal ECG\n";
         cout << "3. Actividad 3: Domino\n";
         cout << "0. Salir\n";
         cout << "Opcion: ";
