@@ -31,17 +31,17 @@ Ejecución del programa
 
 cd output/ 
 
-    ```cmd
-    ./run.sh
-    ```
+```cmd
+./run.sh
+```
 
 2. Windows (PowerShell / CMD)
 
 cd output/  
 
-    ```cmd
-    run.bat
-    ```
+```cmd
+run.bat
+```
 Si se genera algun problema intentar con:
 
 Dé permisos y ejecute:
