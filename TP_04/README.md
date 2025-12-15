@@ -1,46 +1,5 @@
 **Proyecto académico — Programación Avanzada (C++)**
 
-Este proyecto corresponde al desarrollo del **Trabajo Práctico 04 (TP04)** de la asignatura Programación Avanzada.  
-El taller integra algoritmos de búsqueda, simulación de sistemas, hardware-in-the-loop (HIL) y clasificación mediante redes neuronales artificiales (RNA).
-
-El proyecto está organizado de forma modular y controlado desde un menú principal.
-
----
-
-**Estructura del proyecto**
-
-TP04_ProgramacionAvanzada/
-
-- Archivos_cpp/
-    - puzzle.cpp
-    - HIL.cpp
-    - RNA.cpp
-
-- Archivos_hpp/
-    - puzzle.hpp
-    - HIL.hpp
-    - RNA.hpp
-
-- proyecto.cpp               # Archivo principal (menú general)
-- README.md
-- output/
-    - ejecutables y archivos generados
-
----
-
-**Requisitos**
-
-- Compilador: **g++ (C++17 o superior)**
-- Sistema operativo: **Linux, macOS o Windows (WSL / PowerShell)**
-- Editor recomendado: **Visual Studio Code**
-
----
-
-**Compilación del proyecto**
-
-Desde la carpeta principal del proyecto, ejecutar:
-
-g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/proyecto.exe
 ## Descripción General
 Este proyecto implementa tres aplicaciones de ingeniería avanzada desarrolladas en C++ bajo un enfoque de **programación modular y orientada a objetos**. El sistema integra algoritmos de búsqueda en espacios de estados, simulación de sistemas dinámicos en tiempo real (HIL) e Inteligencia Artificial (Redes Neuronales), gestionados mediante una arquitectura centralizada.
 
@@ -57,17 +16,57 @@ La organización de archivos del proyecto es la siguiente:
 * **`proyecto.cpp`**: Archivo principal (Main).
 ---
 
-**Ejecución del programa**
+### Requisitos Previos
+1.  Tener instalado el compilador `g++`.
+2.  Contar con un entorno de desarrollo .
+3. Sistema operativo: **Linux, macOS o Windows (WSL / PowerShell)**
+4.  Asegurarse de que el archivo `digitos.txt` exista dentro de la carpeta `output/data/` para la Actividad 3.
+---
 
-**Linux / macOS / WSL**
+**Compilación del proyecto**
 
-cd output  
-./proyecto.exe
+Ejecución del programa
 
-**Windows (PowerShell / CMD)**
+1. Linux / macOS / WSL
 
-cd output  
-proyecto.exe
+cd output/ 
+
+    ```cmd
+    ./run.sh
+    ```
+
+2. Windows (PowerShell / CMD)
+
+cd output/  
+
+    ```cmd
+    run.bat
+    ```
+Si se genera algun problema intentar con:
+
+Dé permisos y ejecute:
+
+    ```bash
+    chmod +x build.sh
+    ./run.sh
+    ```
+
+3. Otra forma para Windows
+
+cd output/executable/
+
+    ```cmd
+    proyecto.exe
+    ```
+
+Desde la carpeta principal del proyecto, ejecutar:
+
+    ```bash
+        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
+    ```
+---
+
+**Una vez ejecutado, el programa mostrara lo siguiente:**
 
 ---
 
@@ -125,39 +124,3 @@ proyecto.exe
 
 **Estudiantes de Ingeniería Mecatrónica**  
 **Universidad Nacional de Colombia — Sede De la Paz**
-## Instrucciones de Compilación y Ejecución
-
-### Requisitos Previos
-1.  Tener instalado el compilador `g++`.
-2.  Contar con un entorno de desarrollo (IDE o terminal con herramientas de compilación).
-3.  Asegurarse de que el archivo `digitos.txt` exista dentro de la carpeta `output/data/` para la Actividad 3.
-
-
-### Para Windows
-1.  Abra una terminal y navegue a la carpeta `output`.
-2.  Ejecute el script de construcción:
-    ```cmd
-    run.bat
-    ```
-3.  Si prefiere compilar manualmente:
-    ```cmd
-    g++ -I ../Archivos_hpp ../Proyecto.cpp ../Archivos_cpp/*.cpp -o TallerApp.exe
-    proyecto.exe
-    ```
-
-### Para Linux / MacOS
-1.  Abra una terminal en la carpeta `output`.
-2.  Dé permisos y ejecute:
-    ```bash
-    chmod +x build.sh
-    ./run.sh
-    ```
-
----
-**Autores**
-
-- _**William A. Hernández A.**_
-- _**Jesus D. Angulo B.**_
-
-**Estudiantes de Ingeniería Mecatrónica**
-**Universidad Nacional de Colombia - Sede De la Paz**

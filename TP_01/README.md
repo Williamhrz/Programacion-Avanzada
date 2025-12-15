@@ -51,11 +51,28 @@ g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o runproyect
 
 **Linux / macOS / WSL**
 
-./runproyect
+    ```bash
+        ./run.sh
+    ```
+
+Si genera problemas intentar con:
+
+    ```bash
+        chmod +x build.sh
+        ./run.sh
+    ```
 
 **Windows (PowerShell / CMD)**
 
-runproyect.exe
+    ```cmd
+    run.bat
+    ```
+
+Otra forma de ejecutar es la siguiente:
+
+    ```bash
+        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
+    ```
 
 ---
 
