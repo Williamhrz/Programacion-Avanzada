@@ -46,24 +46,24 @@ Si se genera algun problema intentar con:
 
 Dé permisos y ejecute:
 
-    ```bash
-    chmod +x build.sh
-    ./run.sh
-    ```
+```bash
+chmod +x build.sh
+./run.sh
+```
 
 3. Otra forma para Windows
 
 cd output/executable/
 
-    ```cmd
-    proyecto.exe
-    ```
+```cmd
+proyecto.exe
+```
 
 Desde la carpeta principal del proyecto, ejecutar:
 
-    ```bash
-        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
-    ```
+```bash
+    g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
+```
 ---
 
 **Una vez ejecutado, el programa mostrara lo siguiente:**
