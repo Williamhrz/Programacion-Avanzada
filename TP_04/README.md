@@ -1,6 +1,5 @@
 **Proyecto académico — Programación Avanzada (C++)**
 
-<<<<<<< HEAD
 Este proyecto corresponde al desarrollo del **Trabajo Práctico 04 (TP04)** de la asignatura Programación Avanzada.  
 El taller integra algoritmos de búsqueda, simulación de sistemas, hardware-in-the-loop (HIL) y clasificación mediante redes neuronales artificiales (RNA).
 
@@ -153,24 +152,12 @@ proyecto.exe
     chmod +x build.sh
     ./run.sh
     ```
-=======
-## Descripción General
-Este proyecto implementa tres aplicaciones de ingeniería avanzada desarrolladas en C++ bajo un enfoque de **programación modular y orientada a objetos**. El sistema integra algoritmos de búsqueda en espacios de estados, simulación de sistemas dinámicos en tiempo real (HIL) e Inteligencia Artificial (Redes Neuronales), gestionados mediante una arquitectura centralizada.
 
-El código hace uso extensivo de recursividad para el control de flujos y herramientas personalizadas de gestión de archivos (`auto_save`, `self_clean`) para garantizar la persistencia y organización de los datos.
-
-Estructura del Directorio
-La organización de archivos del proyecto es la siguiente:
->>>>>>> e73d339 (Revert "Merge branch 'desarrollo-jesus' of https://github.com/Williamhrz/Programacion-Avanzada into desarrollo-william")
-
-* **`Archivos_hpp/`**: Contiene las definiciones (.hpp) y módulos de utilidad.
-* **`Archivos_cpp/`**: Contiene la implementación lógica (.cpp) de los algoritmos.
-* **`output/data/`**: Contiene los archivos de entrada requeridos (ej. `digitos.txt`).
-* **`output/executable/`**: Carpeta destino para el binario compilado.
-* **`output/exit/`**: Carpeta donde se guardan los reportes y logs de resultados.
-* **`proyecto.cpp`**: Archivo principal (Main).
 ---
 **Autores**
 
 - _**William A. Hernández A.**_
-- _**Jesus D. Angulo B
+- _**Jesus D. Angulo B.**_
+
+**Estudiantes de Ingeniería Mecatrónica**
+**Universidad Nacional de Colombia - Sede De la Paz**
