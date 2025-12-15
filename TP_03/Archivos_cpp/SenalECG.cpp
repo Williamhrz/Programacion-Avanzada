@@ -1,6 +1,7 @@
 #include "../Archivos_hpp/SenalECG.hpp"
 #include <fstream>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -19,18 +20,28 @@ bool SenalECG::cargarDesdeArchivo(const string& ruta) {
     tiempo.clear();
     amplitud.clear();
 
-    float t, a;
-    while (file >> t >> a) {
-        tiempo.push_back(t);
-        amplitud.push_back(a);
+    float val1, val2;
+    char separador; // Variable para "comerse" la coma
+
+    // El archivo tiene el formato: Valor1,Valor2
+    // Usamos 'separador' para leer la coma y que no rompa el flujo
+    while (file >> val1 >> separador >> val2) {
+        
+        // Según tu ECG.txt:
+        // val1 es la Amplitud (primera columna)
+        // val2 es el Tiempo (segunda columna: 0, 0.005...)
+        
+        amplitud.push_back(val1);
+        tiempo.push_back(val2);
     }
 
     file.close();
 
     cout << "Muestras cargadas: " << tiempo.size() << endl;
-    return true;
+    
+    // Retorna true solo si realmente cargó algo
+    return !tiempo.empty(); 
 }
-
 // Filtro pasa bajos simple
 void SenalECG::filtrarSenal() {
 

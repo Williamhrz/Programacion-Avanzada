@@ -273,6 +273,6 @@ void JuegoDomino::jugar() {
         continuar_ciclo:;
     }
 
-    historial.guardarArchivo("historial_domino.txt");
+    historial.guardarArchivo("exit/historial_domino.txt");
     cout << "\nJuego finalizado.\n";
 }

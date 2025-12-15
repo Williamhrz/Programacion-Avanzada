@@ -59,8 +59,8 @@ void actividad1() {
             string nombre;
             cout << "Nombre archivo salida: ";
             cin >> nombre;
-            lista.imprimirEnArchivo("output/" + nombre);
-            cout << "Archivo generado en output/.\n";
+            lista.imprimirEnArchivo("exit/" + nombre);
+            cout << "Archivo generado en output/exit/ .\n";
         }
 
         else if (opcion == 5) {
@@ -95,9 +95,9 @@ void actividad2() {
         cin >> opcion;
 
         if (opcion == 1) {
-            cout << "Archivo (en output/): ";
+            cout << "Archivo (en output/data): ";
             cin >> archivo;
-            ecg.cargarDesdeArchivo("output/" + archivo);
+            ecg.cargarDesdeArchivo("data/" + archivo);
         }
 
         else if (opcion == 2) {
@@ -116,8 +116,8 @@ void actividad2() {
         else if (opcion == 4) {
             cout << "Archivo salida (en output/): ";
             cin >> archivo;
-            ecg.guardarEnArchivo("output/" + archivo);
-            cout << "Archivo guardado en output/.\n";
+            ecg.guardarEnArchivo("exit/" + archivo);
+            cout << "Archivo guardado en output/exit .\n";
         }
 
         else if (opcion == 5) {
