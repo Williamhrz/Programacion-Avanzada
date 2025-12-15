@@ -23,9 +23,12 @@ TP03_ProgramacionAvanzada/
 
 - proyecto.cpp               # Archivo principal (menú general)
 - README.md
-- output/                    # Carpeta de salida
-    - proyecto.exe            # Ejecutable
-    - archivos generados (.txt)
+- output/                    # Carpeta de generados
+    - data/                  # Carpeta de datos
+    - executable/            # Carpeta de ejecutables
+        - proyecto_run.exe
+        - proyecto
+    - exit/                  # Carpeta de archivos de salida
 
 ---
 
@@ -41,25 +44,19 @@ TP03_ProgramacionAvanzada/
 
 Desde la carpeta principal del proyecto (TP03), ejecutar:
 
-g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/proyecto.exe
-
----
-
 **Explicación de la línea de compilación**
 
-| Parte                    | Descripción                                      |
-|-------------------------|--------------------------------------------------|
-| `g++`                   | Compilador de C++                                |
-| `proyecto.cpp`          | Archivo principal con el menú general            |
-| `Archivos_cpp/*.cpp`    | Compila todos los módulos del proyecto           |
-| `-I Archivos_hpp`       | Indica la ruta de los archivos de cabecera       |
-| `-o output/proyecto.exe`| Genera el ejecutable dentro de la carpeta output |
+| Parte                    | Descripción                                            |
+|-------------------------|--------------------------------------------------       |
+| `g++`                   | Compilador de C++                                       |
+| `proyecto.cpp`          | Archivo principal con el menú general                   |
+| `Archivos_cpp/*.cpp`    | Compila todos los módulos del proyecto                  |
+| `-I Archivos_hpp`       | Indica la ruta de los archivos de cabecera              |
+| `-o output/executable/` | Genera el ejecutable dentro de la carpeta                |
 
 ---
 
 **Ejecución del programa**
-
-Una vez compilado, el ejecutable se encuentra dentro de la carpeta **output**.
 
 ---
 
@@ -72,11 +69,20 @@ cd output
 
 3. Ejecutar el programa:
 
-./proyecto.exe
+    ```bash
+        ./run.sh
+    ```
+
+Si se genera algun problema de permisos y ejecute:
+
+    ```bash
+    chmod +x build.sh
+    ./run.sh
+    ```
 
 ---
 
-**Windows (PowerShell o CMD)**
+**Windows**
 
 1. Ubicarse en la carpeta del proyecto
 2. Entrar a la carpeta output:
@@ -85,8 +91,16 @@ cd output
 
 3. Ejecutar el programa:
 
-proyecto.exe
+    ```bash
+        run.bat
+    ```
 
+Otra forma para poder ejecutarlo seria esta:
+
+    ```bash
+        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto_run.exe
+
+    ```
 ---
 
 Al ejecutarse, se mostrará el menú general:

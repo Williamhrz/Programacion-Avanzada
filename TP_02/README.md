@@ -27,14 +27,14 @@ TP02_ProgramacionAvanzada/
 
 - proyecto.cpp               # Archivo principal (menú general)
 - README.md                  
-- output/                    # Carpeta de salida
-    - runproyect              # Ejecutable
+- output/                    # Carpeta de generados
+    - executable/            # Carpeta de ejecutables
 
 ---
 
 **Requisitos**
 
-- Compilador: **g++ (C++17 o superior)**
+- Compilador: **g++**
 - Sistema operativo: **Linux, macOS o WSL en Windows**
 - Editor recomendado: **Visual Studio Code o cualquier IDE compatible con C++**
 
@@ -42,9 +42,7 @@ TP02_ProgramacionAvanzada/
 
 **Compilación del proyecto**
 
-Desde la carpeta principal del proyecto, abre una terminal y ejecuta:
-
-g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/runproyect
+Desde la carpeta principal del proyecto, abre una terminal:
 
 ---
 
@@ -56,7 +54,7 @@ g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/runproyect
 | `proyecto.cpp`       | Archivo principal con el menú general       |
 | `Archivos_cpp/*.cpp` | Compila todos los módulos del proyecto      |
 | `-I Archivos_hpp`    | Indica dónde están los archivos `.hpp`      |
-| `-o output/runproyect` | Crea el ejecutable dentro de la carpeta output |
+| `-o output/executable` | Crea el ejecutable dentro de la carpeta   |
 
 ---
 
@@ -75,7 +73,16 @@ cd output
 
 3. Ejecutar el programa:
 
-./runproyect
+    ```bash
+        ./run.sh
+    ```
+
+Si genera problemas intentar con:
+
+    ```bash
+        chmod +x build.sh
+        ./run.sh
+    ```
 
 ---
 
@@ -88,7 +95,17 @@ cd output
 
 3. Ejecutar el programa:
 
-runproyect.exe
+    ```cmd
+    run.bat
+    ```
+
+Otra forma de hacer correr el programa es la siguiente:
+
+    ```cmd
+        g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/executable/proyecto.exe
+    ```
+
+Este se ejecuta desde la carpeta principal
 
 ---
 

@@ -1,104 +1,71 @@
-Estructura del Repositorio
+# Colección de Proyectos de Programación Avanzada en C++
+**Ingeniería Mecatrónica - Universidad Nacional de Colombia**
 
-El repositorio está organizado en tres carpetas principales, cada una correspondiente a un proyecto independiente desarrollado en C++ para la asignatura de **Programación Avanzada**.  
-Ambos proyectos están estructurados de manera modular para mantener un código limpio, ordenado y fácil de mantener.  
-Cada proyecto incluye un archivo **README.md** con instrucciones de compilación y ejecución.
+## Descripción General
+Este repositorio alberga una colección integral de **4 Trabajos Prácticos (TPs)** desarrollados en lenguaje C++. La suite de aplicaciones demuestra una curva de aprendizaje progresiva, abarcando desde los fundamentos del álgebra lineal y manejo de memoria, hasta la implementación de estructuras de datos dinámicas, procesamiento de señales digitales (DSP) e Inteligencia Artificial.
 
----
+El desarrollo de todo el repositorio se rige bajo una filosofía de **Programación Modular, Recursiva y Orientada a Objetos**, separando estrictamente las interfaces, la implementación lógica y la gestión de recursos para garantizar un código limpio, escalable y mantenible.
 
-Proyecto TP_01 Programación Avanzada
-
-Esta carpeta contiene el desarrollo completo del **Trabajo Práctico 01**.  
-Su estructura interna está organizada modularmente para separar el código principal de las implementaciones y definiciones auxiliares.
-
-Estructura interna
-
-- **proyecto.cpp**  
-  Archivo principal que contiene la función `main()` y la lógica de ejecución del programa.
-
-- **Archivos_cpp/**  
-  Carpeta con las implementaciones (`.cpp`) de las clases, funciones o módulos utilizados en el proyecto.  
-  Incluye:  
-    - `Operaciones_basicas.cpp`  
-    - `Vector.cpp`  
-    - `Contador_de_vocales.cpp`  
-    - `Norma_vector_Eu.cpp`  
-    - `Matriz_pseudo.cpp`
-
-- **Archivos_hpp/**  
-  Carpeta que contiene los archivos de cabecera (`.hpp`) donde se declaran clases, funciones, estructuras y prototipos.  
-  Incluye:  
-    - `Operaciones_basicas.hpp`  
-    - `Vector.hpp`  
-    - `Contador_de_vocales.hpp`  
-    - `Norma_vector_Eu.hpp`  
-    - `Matriz_pseudo.hpp`
-
-- **README.md**  
-  Documentación completa del proyecto, incluyendo requisitos, instrucciones de compilación, menú principal y descripción de cada ejercicio.
-
-- **output**  
-  Carpeta donde en primer lugar se generan los ejecutable generado tras compilar el proyecto y en segundo lugar estan las instrucciones de los ejecutable del proyecto para cada uno de sistemas operativos.
-
-  Se ejecuta en Linux (Desarrollado en Ubuntu):  
-    ```bash
-    ./runproyect
-
-  Se ejecuta en Windows:
-    ```bash
-    ./runproyect.bat
-
-Proyecto_Num_2 — TP02 Programación Avanzada
-
-Esta carpeta contiene el desarrollo completo del **Trabajo Práctico 02**.  
-Al igual que en el proyecto anterior, el código está organizado de forma modular, separando las implementaciones (`.cpp`) de sus respectivas definiciones (`.hpp`).  
-El proyecto incluye también un archivo principal que gestiona la ejecución general del programa.
+### Características Principales del Repositorio
+* **Multiplataforma:** Todo el código ha sido diseñado, compilado y probado para funcionar nativamente tanto en **Linux** (Ubuntu/Debian) como en **Windows**.
+* **Arquitectura Modular:** Separación estricta de archivos:
+    * `.hpp`: Definiciones y contratos (Headers).
+    * `.cpp`: Implementación de la lógica (Source).
+* **Gestión de Archivos:** Sistema estandarizado de lectura de datos (`/data`) y generación de reportes (`/exit`).
+* **Automatización:** Scripts de construcción y ejecución incluidos (`run.sh` y `run.bat`) para facilitar el despliegue.
 
 ---
 
-Estructura interna
+## Estructura del Proyecto
 
-- **proyecto.cpp**  
-  Archivo principal que contiene la función `main()` del TP02.  
-  Desde aquí se controlan las opciones del programa y se enlazan los distintos módulos.
+El repositorio se divide en cuatro módulos principales, cada uno correspondiente a una etapa de complejidad incremental:
 
-- **Archivos_cpp/**
+```text
+Proyecto_C++
+ ┣  TP_01  (Fundamentos y Álgebra Lineal)
+ ┣  TP_02  (POO y Modelado Matemático)
+ ┣  TP_03  (Estructuras de Datos y Procesamiento de Señales)
+ ┗  TP_04  (IA, HIL y Recursividad Avanzada)
+```
 
-  Carpeta que contiene las implementaciones (`.cpp`) utilizadas específicamente en este proyecto.  
-  Incluye:
+Cada módulo (TP) mantiene una estructura interna estandarizada para facilitar la navegación y el mantenimiento:
 
-    - `act1_vector3D.cpp` 
-    - `act2_matriz.cpp` 
-    - `act3_polinomio.cpp` 
-    - `act4_complejos.cpp` 
-    - `act5_ecuaciones.cpp` 
-    - `act6_domino.cpp` 
+* **`Archivos_hpp/`**: Cabeceras con las declaraciones de clases y funciones.
+* **`Archivos_cpp/`**: Código fuente con la lógica de negocio.
+* **`output/`**: Espacio de trabajo limpio.
+    * `executable/`: Contiene los binarios compilados (`.exe` o binarios Linux).
+    * `data/`: Archivos de entrada requeridos (ej. señales ECG, patrones numéricos).
+    * `exit/`: Logs, reportes y resultados generados por el software.
+* **`proyecto.cpp`**: Punto de entrada principal (Main) que orquesta los menús.
 
-- **Archivos_hpp/**
+## Detalle de los Módulos
 
-  Carpeta que agrupa los archivos de cabecera (`.hpp`) correspondientes a las clases, funciones y prototipos utilizados en el TP02.  
-  Incluye:
+### [TP_01] Fundamentos y Operaciones Vectoriales
+Introducción a la manipulación de memoria y operaciones matemáticas básicas.
+* **Contenido:** Contador de vocales, operaciones matriciales (cálculo de pseudo-inversa), norma Euclideana de vectores y sobrecarga de operadores básicos.
 
-    - `act1_vector3D.hpp`
-    - `act2_matriz.hpp`
-    - `act3_polinomio.hpp`
-    - `act4_complejos.hpp`
-    - `act5_ecuaciones.hpp`
-    - `act6_domino.hpp`
+### [TP_02] Programación Orientada a Objetos (POO)
+Implementación de clases robustas para modelado matemático y simulación.
+* **Contenido:** Clase `Vector3D`, aritmética de Polinomios y Números Complejos, resolución de sistemas de ecuaciones y una primera implementación lógica del juego de Dominó.
 
-- **README.md**
+### [TP_03] Estructuras de Datos y Procesamiento Digital
+Uso de memoria dinámica avanzada y análisis de datos reales.
+* **Señal ECG:** Clase `SenalECG` para filtrar señales cardiacas, detectar picos R y calcular frecuencia cardiaca leyendo archivos `.txt`.
+* **Listas Enlazadas:** Gestión dinámica de un listado estudiantil (inserción, borrado, búsqueda).
+* **Dominó (Historial):** Implementación de listas para guardar y exportar el historial de movimientos de la partida.
 
-  Documento que explica el propósito del proyecto, su funcionamiento, la descripción de cada módulo y las instrucciones para compilar y ejecutar el programa.
+### [TP_04] Aplicaciones Avanzadas e Inteligencia Artificial
+Integración de algoritmos de búsqueda, sistemas de control y redes neuronales.
+* **8-Puzzle:** Solución óptima mediante algoritmo de búsqueda en anchura (**BFS**) y reconstrucción recursiva del camino.
+* **Simulación HIL:** Simulación de tiempo real de una planta dinámica acoplada a un derivador robusto (**HOSM**).
+* **Red Neuronal (RNA):** Clasificación de dígitos (patrones 7x5) mediante Perceptrón Multicapa y algoritmo de **Backpropagation**.
 
-- **output**
-  Carpeta que agrupa los ejecutable generado después de la compilación del TP02, como tambien los archivos de isntrucciones para ejecutar en cada sistema operativo.
+---
 
-  Para ejecutar en Linux (Desarrollado en Ubuntu):
+**Autores**
 
-```bash
-./runproyect
+- _**William A. Hernández A.**_  
+- _**Jesús D. Angulo B.**_
 
-  Para ejecutarlo en Windows:
-
-```bash
-./runproyect.bat
+**Estudiantes de Ingeniería Mecatrónica**  
+**Universidad Nacional de Colombia — Sede De la Paz**
