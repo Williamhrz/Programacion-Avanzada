@@ -1,169 +1,199 @@
-**Proyecto académico — Programación Avanzada (C++)**
 
-Este proyecto corresponde al desarrollo completo del **Taller 3 (TP03)** de la asignatura Programación Avanzada.  
-Se implementan tres actividades principales empleando programación orientada a objetos, estructuras dinámicas, manejo de archivos, procesamiento de señales y simulación de juegos.
+# Taller 3 — Programación Avanzada (C++)
 
-El proyecto está desarrollado en C++ y organizado de forma modular mediante archivos `.hpp` y `.cpp`.
-
----
-
-**Estructura del proyecto**
-
-TP03_ProgramacionAvanzada/
-
-- Archivos_cpp/
-    - listadoEstudiantil.cpp
-    - SenalECG.cpp
-    - Domino.cpp
-
-- Archivos_hpp/
-    - listadoEstudiantil.hpp
-    - SenalECG.hpp
-    - Domino.hpp
-
-- proyecto.cpp               # Archivo principal (menú general)
-- README.md
-- output/                    # Carpeta de salida
-    - proyecto.exe            # Ejecutable
-    - archivos generados (.txt)
+Este proyecto implementa las **tres actividades del Taller 3** de la asignatura Programación Avanzada.  
+El código está completamente modularizado en archivos `.hpp` y `.cpp`, empleando estructuras dinámicas, manejo de archivos, clases, programación orientada a objetos y simulación interactiva.
 
 ---
 
-**Requisitos**
+## Estructura del proyecto
 
-- Compilador: **g++ (C++17 o superior)**
-- Sistema operativo: **Linux, macOS o Windows (PowerShell / CMD)**
-- Editor recomendado: **Visual Studio Code o cualquier IDE compatible con C++**
 
----
 
-**Compilación del proyecto**
+Taller3_ProgramacionAvanzada/
 
-Desde la carpeta principal del proyecto (TP03), ejecutar:
+Archivos_cpp/
 
-g++ proyecto.cpp Archivos_cpp/*.cpp -I Archivos_hpp -o output/proyecto.exe
+ListadoEstudiantil.cpp
 
----
+SenalECG.cpp
 
-**Explicación de la línea de compilación**
+Domino.cpp
 
-| Parte                    | Descripción                                      |
-|-------------------------|--------------------------------------------------|
-| `g++`                   | Compilador de C++                                |
-| `proyecto.cpp`          | Archivo principal con el menú general            |
-| `Archivos_cpp/*.cpp`    | Compila todos los módulos del proyecto           |
-| `-I Archivos_hpp`       | Indica la ruta de los archivos de cabecera       |
-| `-o output/proyecto.exe`| Genera el ejecutable dentro de la carpeta output |
+Archivos_hpp/
 
----
+ListadoEstudiantil.hpp
 
-**Ejecución del programa**
+SenalECG.hpp
 
-Una vez compilado, el ejecutable se encuentra dentro de la carpeta **output**.
+Domino.hpp
+
+proyecto.cpp # Menú principal
+
+README.md
+
+proyecto.exe # Ejecutable (después de compilar)
+
 
 ---
 
-**Linux / macOS / WSL**
+## 🛠 Requisitos
 
-1. Ubicarse en la carpeta del proyecto
-2. Entrar a la carpeta output:
+- Compilador **g++** (C++17 o superior)  
+- Funciona en **Windows, Linux o macOS**  
+- Editor recomendado: **Visual Studio Code**  
 
-cd output
+---
 
-3. Ejecutar el programa:
+## ▶ Compilación del proyecto
+
+Desde la carpeta principal, ejecutar:
+
+
+
+g++ proyecto.cpp Archivos_cpp/*.cpp -IArchivos_hpp -o proyecto.exe
+
+
+o en caso de que el comodín no funcione (especialmente en PowerShell):
+
+
+
+g++ proyecto.cpp Archivos_cpp/ListadoEstudiantil.cpp Archivos_cpp/SenalECG.cpp Archivos_cpp/Domino.cpp -IArchivos_hpp -o proyecto.exe
+
+
+---
+
+## Ejecución
+
+
 
 ./proyecto.exe
 
----
 
-**Windows (PowerShell o CMD)**
+Esto abrirá el menú general:
 
-1. Ubicarse en la carpeta del proyecto
-2. Entrar a la carpeta output:
 
-cd output
 
-3. Ejecutar el programa:
+=========== MENÚ GENERAL ===========
 
-proyecto.exe
+Actividad 1: Listado Estudiantil
 
----
+Actividad 2: Señal ECG
 
-Al ejecutarse, se mostrará el menú general:
+Actividad 3: Dominó
 
-===========  MENÚ GENERAL  ===========
-1. Listado Estudiantil
-2. Señal ECG
-3. Dominó
-0. Salir
+Salir
 
-El usuario debe ingresar el número de la actividad que desea ejecutar.
 
 ---
 
-**Descripción de las actividades**
-
-| Actividad | Descripción |
-|----------|-------------|
-| **1. Listado Estudiantil** | Gestión de estudiantes mediante una lista enlazada simple. |
-| **2. Señal ECG** | Procesamiento de señales biomédicas con filtrado y detección de picos. |
-| **3. Dominó** | Simulación manual de un juego de dominó con historial de jugadas. |
+# Descripción de las actividades
 
 ---
 
-**Detalle de cada actividad**
+## **1. Actividad 1 — Listado Estudiantil (Lista enlazada simple)**
+
+Permite administrar un listado dinámico de estudiantes mediante una lista enlazada.
+
+**Funciones disponibles:**
+
+- Insertar estudiante al final  
+- Eliminar por ID  
+- Buscar por ID  
+- Invertir la lista  
+- Mostrar lista en pantalla  
+- Guardar lista en archivo TXT  
+- Acceso posicional mediante `operator[]`  
+
+**Estructura de cada estudiante:**
+
+
+
+nombre | añoNacimiento | id | promedio | email
+
 
 ---
 
-**1. Listado Estudiantil (Lista Enlazada Simple)**
+## **2. Actividad 2 — Procesamiento de Señal ECG**
 
-**Funcionalidades:**
-- Insertar estudiante
-- Eliminar por ID
-- Buscar estudiante por ID
-- Invertir la lista
-- Imprimir lista en pantalla
-- Guardar listado en archivo `.txt`
-- Acceso por índice mediante sobrecarga del operador `[]`
+Permite cargar, filtrar y analizar una señal ECG almacenada en un archivo de texto.
 
-**Salida a archivo:**
-- El archivo se guarda dentro de la carpeta `output`
+El archivo debe tener el formato:
 
----
 
-**2. Señal ECG (Procesamiento de señal)**
 
-**Funcionalidades:**
-- Cargar señal ECG desde archivo `.txt`
-- Filtrar la señal con un filtro pasa-bajos IIR
-- Detección de picos a partir de un umbral
-- Cálculo de frecuencia cardiaca (BPM)
-- Guardar señal filtrada en archivo
+<amplitud> <tiempo>
+<amplitud> <tiempo>
+...
 
-**Formato del archivo de entrada:**
-- Dos columnas: amplitud y tiempo
 
----
+**Operaciones:**
 
-**3. Dominó (Modo manual con historial)**
+- Cargar señal desde archivo  
+- Filtro pasa-bajos (IIR)  
+- Detección de picos por umbral  
+- Guardado de señal filtrada  
+- Cálculo de la frecuencia cardiaca (BPM)  
 
-**Funcionalidades:**
-- Registro de jugadores
-- Reparto de fichas
-- Validación de jugadas
-- Opción de pasar turno
-- Detección de bloqueo
-- Registro completo de jugadas en archivo
+**Ejemplo de archivo válido:**
 
-**Archivo generado:**
-- `historial_domino.txt` dentro de la carpeta `output`
+
+
+0.12 0.00
+0.15 0.01
+0.30 0.02
+0.10 0.03
+0.45 0.04
+...
+
 
 ---
 
-**Autores**
+## **3. Actividad 3 — Juego de Dominó (Modo manual + historial)**
 
-- _**William A. Hernández A.**_  
-- _**Jesús D. Angulo B.**_
+Simulación interactiva de un juego de dominó para dos jugadores.  
+El usuario selecciona manualmente qué ficha desea jugar y en qué lado de la mesa.
 
-**Estudiantes de Ingeniería Mecatrónica**  
-**Universidad Nacional de Colombia — Sede De la Paz**
+**Características:**
+
+- Juego completamente manual (el usuario decide cada jugada)  
+- Detección de bloqueo del juego  
+- Sistema de pasar turno  
+- Validación de jugadas  
+- Historial completo en archivo `historial_domino.txt`  
+  (jugador, ficha usada, estado de la mesa)  
+- Determinación automática del ganador  
+
+---
+
+# Ejemplo de historial de dominó
+
+
+
+[ Turno 1 ]
+Jugador: Maria
+Ficha: [6|3]
+Mesa: [6|3]
+
+[ Turno 2 ]
+Jugador: Juan
+Ficha: [3|2]
+Mesa: [6|3], [3|2]
+
+[ Turno 3 ]
+Jugador: Maria
+Ficha: PASAR
+Mesa: [6|3], [3|2]
+
+...
+
+
+---
+
+# Autores
+
+- **William A. Hernández A.**  
+- **Jesús D. Angulo B.**
+
+_Programa de Ingeniería Mecatrónica_  
+_Universidad Nacional de Colombia — Sede De la Paz_
